@@ -1,6 +1,21 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{lstsemantic}[2013/01/17]
 \RequirePackage{listings}
+\RequirePackage{color}
+
+% all colors are selected on https://encycolorpedia.com/
+\definecolor{logic}{RGB}{30,144,255}% Dodgerblue
+\definecolor{expression}{RGB}{148,0,211}% Darkviolet
+\definecolor{subclassof}{RGB}{218,165,32}% Goldenrod
+\definecolor{class}{RGB}{184,134,11}% Darkgoldenrod
+\definecolor{individual}{RGB}{139,0,139} % Darkmagenta
+%\definecolor{equavalentTo}{RGB}{70,130,180} % Steelblue
+\definecolor{equavalentTo}{RGB}{105,105,105} % Dimgrey
+\definecolor{objectProperty}{RGB}{0,135,189} % BlueNCS
+\definecolor{dataProperty}{RGB}{0,144,0} % Islamicgreen
+\definecolor{onto}{RGB}{41,41,41} % General Motors Dark Gray
+\definecolor{annotation}{RGB}{201,105,30} %Cinnamon
+
 % listing language definitions for several language of the following kinds:
 % * ontology languages
 % * markup languages
@@ -190,6 +205,80 @@ value},%
 morecomment=[l]{\#\ },%
 morestring=[b]",%
 }[keywords,comments,strings]
+
+% OWL (Web Ontology Language) 2 Manchester Syntax 
+% http://www.w3.org/TR/2009/NOTE-owl2-manchester-syntax-20091027/
+% complete specification
+% Protege similar text coloring
+\lstdefinelanguage{owl2ManchesterColored}%
+{
+morekeywords=[10]{%
+Asymmetric,%
+Characteristics,%
+Datatype,DifferentFrom,DifferentIndividuals,DisjointClasses,DisjointProperties,DisjointUnionOf,DisjointWith,Domain,%
+EquivalentClasses,EquivalentProperties,%
+Facts,Functional,%
+HasKey,%
+Import,InverseFunctional,InverseOf,Irreflexive,%
+Ontology,%
+Prefix,%
+Range,Reflexive,%
+SameAs,SameIndividual,Self,SubPropertyChain,SubPropertyOf,Symmetric,%
+Transitive,Types,%
+langPattern,length,%
+maxLength,minLength,%
+pattern,%
+that,},%
+morekeywords=[1]{% logics
+and,
+or,
+inverse,
+not,
+},%
+morekeywords=[2]{% expressions
+only,%
+some,%
+value,
+exactly,%
+max,
+min,
+},%
+morekeywords=[3]{% class
+Class,
+},%
+morekeywords=[4]{% subclassOf
+SubClassOf,
+},%
+morekeywords=[5]{% individual
+Individual,
+},%
+morekeywords=[6]{% equavalentTo
+EquivalentTo,
+},%
+morekeywords=[7]{%
+ObjectProperty,
+},%
+morekeywords=[8]{%
+DataProperty,
+},%
+morekeywords=[9]{% annotation
+AnnotationProperty,
+Annotations,
+},%
+keywordstyle=[10]\color{onto}\bfseries,%
+keywordstyle=[1]\color{logic}\bfseries,%
+keywordstyle=[2]\color{expression}\bfseries,%
+keywordstyle=[3]\color{class}\bfseries,% 
+keywordstyle=[4]\color{subclassof}\bfseries,
+keywordstyle=[5]\color{individual}\bfseries,
+keywordstyle=[6]\color{equavalentTo}\bfseries,
+keywordstyle=[7]\color{objectProperty}\bfseries,
+keywordstyle=[8]\color{dataProperty}\bfseries,
+keywordstyle=[9]\color{annotation}\bfseries,
+morecomment=[l]{\#\ },%
+morestring=[b]",%
+}[keywords,comments,strings]
+
 
 % N3 Logic (also usable for Turtle RDF serialization)
 % http://www.w3.org/TeamSubmission/n3/
